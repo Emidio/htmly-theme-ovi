@@ -1,0 +1,24 @@
+{
+  "name": "Theme Ovi",
+  "version": "1.0.0",
+  "author": "Emidio Reggiani",
+  "homepage": "https://emidio.reggiani.link/post/ovi-htmly-theme"
+  "description": "A modern and sleek theme for blogs, derived from Occasio, with flavors and local comment system integration",
+  "settings": [
+    {
+      "type": "checkbox",
+      "name": "comments_local",
+      "label": "Local comments system widget",
+      "value": "",
+      "info": "Enable local comments system widget"
+    },
+    {
+      "type": "select",
+      "name": "flavor",
+      "label": "Flavor Style",
+      "value": "",
+      "options": ["coffee", "salt", "greentea", "lemon"],
+      "info": "Choose theme flavor"
+    }
+  ]
+}
