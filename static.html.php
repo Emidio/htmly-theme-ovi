@@ -53,3 +53,12 @@ if (file_exists($functions_file)) {
     document.addEventListener('DOMContentLoaded', forceDownloadLinks);
 </script>
 <?php } ?>
+
+<?php if (local() && comments_config('comments.show.static') === 'true'): ?>
+<div id="comments" class="comments-area">
+	<h3 id="reply-title" class="comment-reply-title"><?php echo i18n('Comments');?></h3>
+    <?php
+        displayCommentsSection($static->url, $static->file);
+    ?>
+</div>
+<?php endif; ?>

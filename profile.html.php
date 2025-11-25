@@ -37,3 +37,13 @@ if (file_exists($functions_file)) {
 		<div class="nav-links"><?php echo $pagination['html'];?></div>
 	</nav>
 <?php endif;?>
+
+<?php if (local() && comments_config('comments.show.author') === 'true'): ?>
+<div id="comments" class="comments-area">
+	<h3 id="reply-title" class="comment-reply-title"><?php echo i18n('Comments');?></h3>
+    <?php
+        displayCommentsSection($author->url, $author->file);
+    ?>
+</div>
+<?php endif; ?>
+

@@ -87,10 +87,9 @@ if (file_exists($functions_file)) {
     <?php if (disqus()): ?>
         <div id="disqus_thread"></div>
     <?php endif; ?>
-    <?php if (local()): ?>
+    <?php if (local() && comments_config('comments.show.posts') === 'true'): ?>
         <?php
-        $postId = str_replace(site_url(), '', $p->url);
-        displayCommentsSection($postId);
+        displayCommentsSection($p->url, $p->file);
         ?>
     <?php endif; ?>
 </div>
