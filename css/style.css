@@ -1298,6 +1298,15 @@ body.site-description-hidden .site-header .site-description {
     border-radius: 0.5rem;
 }
 
+.site-main .post-image-summary iframe {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
 .entry-meta {
 	display: flex;
 	flex-wrap: wrap;
