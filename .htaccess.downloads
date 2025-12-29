@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Allow empty referer
+RewriteCond %{HTTP_REFERER} ^$ [OR]
+
+# Allow referer from same host
+RewriteCond %{HTTP_REFERER} ^https?://%{HTTP_HOST}/ [NC]
+
+# Block everything else
+RewriteRule .* - [F,L]

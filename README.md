@@ -21,10 +21,18 @@ In your posts it is possible to use:
 This will create a four images row, all same height, filling the post container width. You can use how many images you want, they will scale and fit automatically.
 
 ## Downloads page
-When slug is "downloads" all links are converted to download buttons.
+When slug is "downloads" all links are converted to download buttons. Copy .htaccess.downloads to your downloads folder (where downloadable files are) and rename it .htaccess
+
+It a very simple anti-leech direct download protection (can be easily bypassed, but at least requires some effort on it).
 
 ## Author page
 Author page display the author picture too (as set in author profile in admin section).
+
+## Syntax highlight and copy code button
+Syntax highlight using highlight.js in code blocks with copy code button. Thanks to **danpros**:
+
+https://www.danpros.com/post/add-syntax-highlighting-to-our-blog-with-highlightjs
+https://www.danpros.com/post/add-a-copy-to-clipboard-button-to-code-blocks
 
 ## Still in development
 This template is usable, but still under development. There are many small improvement needed/to be implemented:

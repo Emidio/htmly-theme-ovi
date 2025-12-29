@@ -190,7 +190,7 @@ figure {
 	margin: 0;
 }
 
-code,
+
 kbd,
 pre,
 samp {
@@ -393,30 +393,6 @@ address {
 }
 
 
-pre {
-	overflow: auto;
-	overflow-x: auto;
-	margin: 1.75rem 0;
-	padding: 1rem 1.25rem;
-	max-width: 100%;
-	width: 100%;
-	min-width: 0;
-	box-sizing: border-box;
-	border: 1px solid;
-	border-color: rgba(0, 0, 0, 0.1);
-	border-color: var(--light-border-color);
-	background: rgba(0, 0, 0, 0.05);
-	font-size: 15px;
-	font-size: 0.9375rem;
-	font-family: "Courier 10 Pitch", Courier, monospace;
-	line-height: 1.75;
-	line-height: var(--text-line-height);
-	white-space: pre;
-	word-wrap: normal;
-	overflow-wrap: normal;
-}
-
-code,
 kbd,
 tt,
 var {
@@ -426,16 +402,6 @@ var {
 	background: rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
 	padding: 2px 5px;
-}
-
-pre code {
-	background: none;
-	padding: 0;
-	display: block;
-	overflow-x: auto;
-	word-wrap: normal;
-	white-space: pre;
-	padding-bottom: 1rem;         /* Spaziatura interna */
 }
 
 abbr,
@@ -593,6 +559,53 @@ a:focus {
 a:hover,
 a:active {
 	outline: 0;
+}
+
+
+
+/*--------------------------------------------------------------
+# - Code blocks
+--------------------------------------------------------------*/
+
+pre {
+    background-color: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    line-height: 1.4;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1.2em;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #000;
+}
+code {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+pre > code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+pre .copy-code {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2em;
+    display:none;
+}
+pre:has(code) {
+    position: relative;
+}
+pre:has(code):hover .copy-code {
+    display:block;
 }
 
 /*--------------------------------------------------------------
@@ -4311,3 +4324,33 @@ body.wide-theme-layout .site .site-footer {
     background-color: rgba(191, 0, 0, 0.2);
     border-left: 3px solid rgba(191, 0, 0);
 }
+
+
+
+/*--------------------------------------------------------------
+## - CSS system messages
+--------------------------------------------------------------*/
+.message-alert {
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.2);
+    border-left: 3px solid rgba(100, 100, 100);
+}
+
+.message-alert-success {
+    background-color: rgba(0, 128, 0, 0.2) !important;
+    border-left: 3px solid rgba(0, 128, 0) !important;
+}
+
+.message-alert-warning {
+    background-color: rgba(255, 204, 0, 0.2) !important;
+    border-left: 3px solid rgba(255, 204, 0) !important;
+}
+
+.message-alert-error {
+    background-color: rgba(191, 0, 0, 0.2) !important;
+    border-left: 3px solid rgba(191, 0, 0) !important;
+}
+

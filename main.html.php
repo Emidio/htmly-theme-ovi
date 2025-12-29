@@ -5,7 +5,6 @@ if (file_exists($functions_file)) {
     require_once $functions_file;
 }
 ?>
-
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
 <?php foreach ($posts as $p):?>
 <?php $img = get_image($p->body);?>

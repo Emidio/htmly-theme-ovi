@@ -16,6 +16,11 @@ if (file_exists($functions_file)) {
     <link rel="stylesheet" id="genericons-css"  href="<?php echo theme_path();?>genericons/genericons.css" type="text/css" media="all" />
     <link rel="stylesheet" href="<?php echo theme_path();?>css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
+
+    <?php if (str_contains($p->body, '<pre><code>')):?>
+    <script type="text/javascript" src="<?php echo theme_path();?>highlightjs/highlight.min.js" id="highlight-js"></script>
+    <link rel="stylesheet" href="<?php echo theme_path();?>highlightjs/styles/default.css" type="text/css" media="all">
+    <?php endif;?>
 </head>
 <?php
 	$oviClass = '';
@@ -80,6 +85,7 @@ if (file_exists($functions_file)) {
         </div>
 
         <div class="content-wrap">
+	    <div class="site-content" id="messages-div" style='display: none;'><div class="message-alert">...</div></div>
 		<div id="content" class="site-content">
 			<main id="main" class="site-main" role="main">
 
@@ -226,9 +232,47 @@ if (file_exists($functions_file)) {
 	</script>
 	<script type="text/javascript" src="<?php echo theme_path();?>js/custom.js" id="custom-js"></script>
 
+    <!-- Javascript to handle system messages calls - actually used for subscribe/unsubscribe -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all URL parameters
+            const params = new URLSearchParams(window.location.search);
+            
+            // Only make the request if there are GET parameters
+            if (params.toString()) {
+                fetch('themes/ovi/sysmessages.php?' + params.toString())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message && data.message.trim() !== '') {
+                            // Get DOM elements
+                            const messagesDiv = document.getElementById('messages-div');
+                            const innerDiv = messagesDiv.querySelector('.message-alert');
+                            
+                            // Set the message text
+                            innerDiv.textContent = data.message;
+                            
+                            // Reset classes and add the new class
+                            innerDiv.className = 'message-alert message-alert-' + data.class;
+                            
+                            // Show the messages div
+                            messagesDiv.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch Error:', error);
+                    });
+            }
+        });
+    </script>
+
     <?php if (str_contains($p->body, '<div class="image-row">')):?>
         <!-- Javascript to handle the image row auto fit - added only if image-row is present in post content -->
-        <script>
+        <script type="text/javascript">
             const containers = document.querySelectorAll('.image-row');
             const mobileBreakpoint = 768; // px
             const gap = 5; // px
@@ -305,10 +349,51 @@ if (file_exists($functions_file)) {
             });
         </script>
     <?php endif;?>
+    
+    <?php if (str_contains($p->body, '<pre><code>')):?>
+    <script type="text/javascript">
+        // highlight code in code blocks
+        hljs.highlightAll();
 
+        // add copy button to code blocks
+        const copyButtonLabel = "<?php echo i18n('codebtn_copy'); ?>";
+        let blocks = document.querySelectorAll("pre:has(code)");
 
+        blocks.forEach((block) => {
+            if (navigator.clipboard) {
+                let button = document.createElement("button");
+                button.className = "btn btn-primary copy-code";
+                button.innerHTML = copyButtonLabel;
+
+                block.style.position = "relative"; // Ensure `pre` is positioned
+                block.appendChild(button); // Attach the button inside `pre`
+
+                button.addEventListener("click", async () => {
+                    await copyCode(block, button);
+                });
+
+                // Keep button fixed when scrolling horizontally
+                block.addEventListener("scroll", () => {
+                    button.style.right = 10 - block.scrollLeft + "px"; // Adjust right offset dynamically
+                });
+            }
+        });
+
+        async function copyCode(block, button) {
+            let code = block.querySelector("code");
+            let text = code.innerText;
+            await navigator.clipboard.writeText(text);
+
+            button.innerText = "<?php echo i18n('codebtn_copied'); ?>";
+            setTimeout(() => {
+                button.innerHTML = copyButtonLabel;
+            }, 700);
+        }
+
+        
+    </script>
+    <?php endif;?>
 
 	<?php if (analytics()): ?><?php echo analytics() ?><?php endif; ?>
 </body>
 </html>
-
