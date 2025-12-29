@@ -32,6 +32,7 @@ Author page display the author picture too (as set in author profile in admin se
 Syntax highlight using highlight.js in code blocks with copy code button. Thanks to **danpros**:
 
 https://www.danpros.com/post/add-syntax-highlighting-to-our-blog-with-highlightjs
+
 https://www.danpros.com/post/add-a-copy-to-clipboard-button-to-code-blocks
 
 ## Still in development
