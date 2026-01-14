@@ -85,10 +85,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	--footer-link-color: #fff;
 	--footer-link-hover-color: rgba(255, 255, 255, 0.6);
 	--footer-border-color: rgba(255, 255, 255, 0.1);
-	--text-font: "Barlow", arial, helvetica, sans-serif;
-	--title-font: "Barlow", arial, helvetica, sans-serif;
-	--navi-font: "Barlow", arial, helvetica, sans-serif;
-	--widget-title-font: "Barlow", arial, helvetica, sans-serif;
+	--text-font: arial, helvetica, sans-serif;
+	--title-font: arial, helvetica, sans-serif;
+	--navi-font: arial, helvetica, sans-serif;
+	--widget-title-font: arial, helvetica, sans-serif;
 	--title-font-weight: bold;
 	--navi-font-weight: normal;
 	--widget-title-font-weight: bold;
@@ -104,7 +104,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 html {
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
@@ -320,7 +320,7 @@ textarea {
 	color: var(--text-color);
 	font-size: 16px;
 	font-size: 1rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--text-font);
 	line-height: 1.75;
 	line-height: var(--text-line-height);
@@ -337,7 +337,7 @@ h6 {
 	margin-bottom: 0.75em;
 	color: #2a4861;
 	color: var(--title-color);
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
 	font-weight: bold;
 	font-weight: var(--title-font-weight);
@@ -455,7 +455,7 @@ blockquote cite {
 	display: block;
 	color: rgba(0, 0, 0, 0.9);
 	color: var(--text-color);
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--text-font);
 	font-size: 16px;
 	font-size: 1rem;
@@ -598,7 +598,7 @@ pre .copy-code {
     top: 5px;
     right: 5px;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.2em;
+    border-radius: 0.2rem;
     display:none;
 }
 pre:has(code) {
@@ -711,6 +711,7 @@ textarea {
 	margin-left: 0.5rem;
 	padding: 0.75rem 1rem;
 	align-items: center;
+	border-radius: 0.2rem;
 }
 
 .search-form .search-submit .icon-search {
@@ -867,7 +868,7 @@ textarea {
 	text-decoration: none;
 	font-size: 24px;
 	font-size: 1.5rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
 	font-weight: bold;
 	font-weight: var(--title-font-weight);
@@ -940,7 +941,7 @@ body.site-description-hidden .site-header .site-description {
 	list-style: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--navi-font);
 	font-weight: normal;
 	font-weight: var(--navi-font-weight);
@@ -1043,7 +1044,7 @@ body.site-description-hidden .site-header .site-description {
 	text-decoration: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--navi-font);
 	font-weight: normal;
 	font-weight: var(--navi-font-weight);
@@ -1165,12 +1166,7 @@ body.site-description-hidden .site-header .site-description {
 	padding: 1.5rem;
 	background-color: #ededef;
 	background-color: var(--widget-background-color);
-}
-
-@media only screen and (min-width: 480px) {
-	.sidebar .widget {
-		padding: 2rem;
-	}
+	border-radius: 0.2rem;
 }
 
 @media only screen and (min-width: 880px) {
@@ -1267,7 +1263,7 @@ body.site-description-hidden .site-header .site-description {
 	word-wrap: break-word;
 	font-size: 24px;
 	font-size: 1.5rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
 	font-weight: bold;
 	font-weight: var(--title-font-weight);
@@ -1308,7 +1304,7 @@ body.site-description-hidden .site-header .site-description {
 	vertical-align: top;
     aspect-ratio: 3 / 1;
     object-fit: cover;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
 }
 
 .site-main .post-image-summary iframe {
@@ -1317,7 +1313,7 @@ body.site-description-hidden .site-header .site-description {
 	vertical-align: top;
 
     object-fit: cover;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
 }
 
 .entry-meta {
@@ -1370,6 +1366,10 @@ body.site-description-hidden .site-header .site-description {
 /* Entry Categories */
 .entry-categories {
 	margin-right: 1rem;
+}
+
+.entry-categories a {
+	border-radius: 0.2rem;
 }
 
 .entry-categories ul {
@@ -1464,7 +1464,7 @@ body.date-hidden.author-hidden.categories-hidden.comments-hidden .type-post .ent
 	background-color: var(--button-color);
 	font-size: 15px;
 	font-size: 0.9375rem;
-	border-radius: 0.5rem;
+	border-radius: 0.2rem;
 }
 
 .read-more:link,
@@ -1606,7 +1606,7 @@ body.page-template-template-fullwidth-no-title .site-content .site-main .entry-c
 .search-header .search-title {
 	font-size: 20px;
 	font-size: 1.25rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
 	font-weight: bold;
 	font-weight: var(--title-font-weight);
@@ -1700,8 +1700,8 @@ body.page-template-template-fullwidth-no-title .site-content .site-main .entry-c
 	.blog-layout-two-column-grid .post-wrapper .type-post .read-more,
 	.blog-layout-three-column-grid .post-wrapper .type-post .entry-meta,
 	.blog-layout-three-column-grid .post-wrapper .type-post .read-more {
-		font-size: 15px;
-		font-size: 0.9375rem;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 
 	.blog-layout-two-column-grid .post-wrapper .type-post .entry-tags,
@@ -1803,6 +1803,7 @@ body.page-template-template-fullwidth-no-title .site-content .site-main .entry-c
 	text-decoration: none;
 	background-color: #ededef;
 	background-color: var(--post-meta-background-color);
+	border-radius: 0.2rem;
 }
 
 .pagination .page-numbers.dots {
@@ -2339,7 +2340,7 @@ p.has-background {
 	word-wrap: break-word;
 	font-size: 20px;
 	font-size: 1.25rem;
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--widget-title-font);
 	font-weight: bold;
 	font-weight: var(--widget-title-font-weight);
@@ -2400,7 +2401,7 @@ p.has-background {
 	margin: 0 0 1.5rem;
 	color: #2a4861;
 	color: var(--title-color);
-	font-family: "Barlow", arial, helvetica, sans-serif;
+	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
 	font-weight: bold;
 	font-weight: var(--title-font-weight);
@@ -3512,7 +3513,7 @@ figcaption,
 	background-color: var(--button-color);
 	font-size: 15px;
 	font-size: 0.9375rem;
-	border-radius: 0.5rem;
+	border-radius: 0.2rem;
 	text-decoration: none;
 }
 
@@ -3575,7 +3576,7 @@ figcaption,
 	line-height:1;
 	color: var(--button-text-color);
 	text-decoration: none;
-	border-radius: 0.5rem;
+	border-radius: 0.2rem;
 }
 
 .tzwb-social-icons .social-icons-menu li a:hover,
@@ -3626,8 +3627,8 @@ figcaption,
 	}
 
 	.entry-content {
-		font-size: 17px;
-		font-size: 1.0625rem;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 
 	button,
@@ -3647,8 +3648,8 @@ figcaption,
 	.comment-form .logged-in-as,
 	.comment-reply-title small a,
 	.site-footer {
-		font-size: 15px;
-		font-size: 0.9375rem;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 }
 
@@ -3681,8 +3682,8 @@ figcaption,
 
 	.archive-header .archive-description,
 	.comment {
-		font-size: 17px;
-		font-size: 1.0625rem;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 
 	button,
@@ -3692,8 +3693,8 @@ figcaption,
 	.entry-meta,
 	.read-more,
 	.pagination {
-		font-size: 17px;
-		font-size: 1.0625rem;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 
 	.entry-tags,
@@ -4222,6 +4223,10 @@ body.wide-theme-layout .site .site-footer {
 	margin-top:0;
 }
 
+.post-link a {
+    text-decoration: none;   
+}
+
 .post-link a:after {
     font-family: "Genericons";
     content: "\f442";
@@ -4275,7 +4280,7 @@ body.wide-theme-layout .site .site-footer {
     background-color: var(--button-color);
     text-decoration: none;
     font-size: 0.9375rem;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     }
 
 .downloads-class > p > a:hover,
@@ -4354,3 +4359,7 @@ body.wide-theme-layout .site .site-footer {
     border-left: 3px solid rgba(191, 0, 0) !important;
 }
 
+
+.hljs {
+    background: none !important;
+}

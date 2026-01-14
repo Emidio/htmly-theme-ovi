@@ -4,6 +4,7 @@ $functions_file = theme_path() . 'functions.php';
 if (file_exists($functions_file)) {
     require_once $functions_file;
 }
+$config_theme = config_theme();
 ?>
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
 <!doctype html>
@@ -11,13 +12,12 @@ if (file_exists($functions_file)) {
 <head>
     <?php echo head_contents();?>
     <?php echo $metatags;?>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" id="genericons-css"  href="<?php echo theme_path();?>genericons/genericons.css" type="text/css" media="all" />
     <link rel="stylesheet" href="<?php echo theme_path();?>css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
 
-    <?php if (str_contains($p->body, '<pre><code>')):?>
+    <?php if (isset($p) && str_contains($p->body, '<pre><code>')):?>
     <script type="text/javascript" src="<?php echo theme_path();?>highlightjs/highlight.min.js" id="highlight-js"></script>
     <link rel="stylesheet" href="<?php echo theme_path();?>highlightjs/styles/default.css" type="text/css" media="all">
     <?php endif;?>
@@ -158,7 +158,29 @@ if (file_exists($functions_file)) {
 				<?php if (local()): ?>
 				<section id="tzwb-recent-comments" class="widget tzwb-recent-comments">
 					<h3 class="widget-title"><?php echo i18n('Comments');?></h3>
-					<script src="//<?php echo config('disqus.shortname');?>.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=0&amp;avatar_size=48&amp;excerpt_length=200&amp;hide_mods=0" type="text/javascript"></script><style>li.dsq-widget-item {padding-top:15px;} img.dsq-widget-avatar {margin-right:5px;} ul.dsq-widget-list {padding-left:0px}</style>
+					<ul>
+					<?php
+					    $comments = getPublishedComments(5);
+					    foreach ($comments as $comment) {
+					        echo "<li><a href=\"" . site_url() . $comment['url'] . "#" . $comment['id'] . "\">" . $comment['name'] . "</a>";
+					        echo "<span><br>" . date(config('date.format'), $comment['timestamp']) . "</span>";
+					        echo "<br>" . $comment['comment'] . "</li>";
+					    }
+					?>
+					</ul>
+				</section>
+				<?php endif;?>
+
+
+				<?php if (config_theme('webcam')): ?>
+				<section id="tzwb-webcam" class="widget tzwb-webcam">
+					<h3 class="widget-title"><?php echo i18n('Webcam');?></h3>
+					<?php
+    					$widget_file = ltrim(parse_url(theme_path(), PHP_URL_PATH), '/') . 'widgets/webcam.php';
+                        if (file_exists($widget_file)) {
+                            require_once $widget_file;
+                        }
+					?>
 				</section>
 				<?php endif;?>
 

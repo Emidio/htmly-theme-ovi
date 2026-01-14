@@ -33,4 +33,14 @@ function getAuthorImage($authorname)
     return '';
 }
 
+
+function config_theme()
+{
+    $config = array();
+    $config_path = $path = ltrim(parse_url(theme_path(), PHP_URL_PATH), '/') . 'config.ini';
+    $config = parse_ini_file($config_path, true);
+    return $config;
+}
+
+
 ?>

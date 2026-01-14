@@ -8,17 +8,15 @@ if (file_exists($functions_file)) {
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
 <article class="tz-magazine-post post type-post hentry">
 	<header class="post-header entry-header">
-		<?php if(!empty($p->link)){ ?>
-		<h1 class="post-title entry-title post-link"><a href="<?php echo $p->link;?>" target="_blank"><?php echo $p->title;?></a></h1>
-		<?php } else { ?>
 		<h1 class="post-title entry-title"><?php echo $p->title;?></h1>
-		<?php } ?>
 		<div class="entry-meta">
 			<div class="entry-categories"> <?php echo $p->category;?></div>
 			<span class="posted-on"><a href="<?php echo $p->url;?>" rel="bookmark"><time class="entry-date published"><?php echo format_date($p->date);?></time></a></span>
 			<span class="author"><a class="url" href="<?php echo $p->authorUrl;?>"><?php echo $p->authorName;?></a></span>
 			<?php if (disqus_count()) { ?> 
 				<span><i class="fa fa-comments"></i> <a href="<?php echo $p->url ?>#disqus_thread"> <?php echo i18n('Comments');?></a></span>
+		    <?php } elseif (local()) { ?>
+		         <span><i class="fa fa-comments"></i> <a href="<?php echo $p->url ?>#disqus_thread"> <?php echo i18n('Comments');?></a></span>
 			<?php } elseif (facebook()) { ?> 
 				<span><i class="fa fa-comments"></i> <a href="<?php echo $p->url ?>#comments"><span><fb:comments-count href=<?php echo $p->url ?>></fb:comments-count> <?php echo i18n('Comments');?></span></a></span>
             <?php } ?>
@@ -46,6 +44,11 @@ if (file_exists($functions_file)) {
 	<?php if (!empty($p->quote)):?>
 	<figure class="post-image" style="font-size:20px;">
 		<blockquote><?php echo $p->quote;?></blockquote>
+	</figure>
+	<?php endif;?>
+	<?php if (!empty($p->link)):?>
+	<figure class="post-image" style="font-size:20px;">
+		<blockquote class="post-link"><a href="<?php echo $p->link;?>" target="_blank"><?php echo $p->link;?></a></blockquote>
 	</figure>
 	<?php endif;?>
 

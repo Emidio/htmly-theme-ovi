@@ -1,20 +1,19 @@
 <?php
 // Include custom functions
+/*
 $functions_file = theme_path() . 'functions.php';
 if (file_exists($functions_file)) {
     require_once $functions_file;
 }
+$config_theme = config_theme();
+*/
 ?>
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
 <?php foreach ($posts as $p):?>
 <?php $img = get_image($p->body);?>
 <article class="tz-magazine-post post type-post status-publish format-standard has-post-thumbnail hentry">
 	<header class="post-header entry-header">
-		<?php if(!empty($p->link)){ ?>
-		<h2 class="post-title entry-title post-link"><a href="<?php echo $p->link;?>" target="_blank"><?php echo $p->title;?></a></h2>
-		<?php } else { ?>
 		<h2 class="post-title entry-title"><a href="<?php echo $p->url;?>" rel="bookmark"><?php echo $p->title;?></a></h2>
-		<?php } ?>
 		<div class="entry-meta">
 			<div class="entry-categories"> <?php echo $p->category;?></div>
 			<span class="posted-on"><a href="<?php echo $p->url;?>" rel="bookmark"><time class="entry-date published"><?php echo format_date($p->date);?></time></a></span>
@@ -53,6 +52,15 @@ if (file_exists($functions_file)) {
     <?php if (!empty($p->quote)):?>
         <figure class="post-image" style="font-size:20px;">
             <blockquote><?php echo $p->quote;?></blockquote>
+        </figure>
+    <?php endif;?>
+        <?php if (!empty($p->link)):?>
+        <?php
+            $parts = parse_url($p->link);
+            $baseurl = $parts['scheme'] . '://' . $parts['host'];
+        ?>
+        <figure class="post-image" style="font-size:20px;">
+            <blockquote class="post-link"><a href="<?php echo $p->link;?>" target="_blank"><?php echo $baseurl;?></a></blockquote>
         </figure>
     <?php endif;?>
 
