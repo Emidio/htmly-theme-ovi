@@ -5,7 +5,7 @@
  * @package Ovi
  */
  
- 
+
 (function ($) {
     $.fn.tabbedWidget = function (widget) {
         var instance = "#" + widget.attr("id");
@@ -145,5 +145,4 @@
 	initNavigation( '.header-bar', '.top-navigation' );
 
 })( jQuery );
-
 

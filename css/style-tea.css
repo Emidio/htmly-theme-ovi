@@ -11,6 +11,7 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: ovi
 Tags: blog, news
+Flavor: tea
 
 This theme, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -49,8 +50,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # - CSS Variables
 --------------------------------------------------------------*/
 :root {
-	--primary-color: #404040;
-	--secondary-color: #595959;
+	--primary-color: #085820;
+	--secondary-color: #16963C;
 	--tertiary-color: #90aec7;
 	--accent-color: #60945d;
 	--contrast-color: #e63e4c;
@@ -63,24 +64,24 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	--light-text-color: rgba(0, 0, 0, 0.5);
 	--medium-border-color: rgba(0, 0, 0, 0.3);
 	--light-border-color: rgba(0, 0, 0, 0.1);
-	--link-color: #595959;
-	--link-hover-color: #404040;
-	--button-color: #404040;
+	--link-color: #16963C;
+	--link-hover-color: #085820;
+	--button-color: #085820;
 	--button-text-color: #fff;
-	--button-hover-color: #595959;
+	--button-hover-color: #16963C;
 	--button-hover-text-color: #fff;
-	--header-background-color: #404040;
+	--header-background-color: #085820;
 	--header-text-color: #fff;
 	--header-text-hover-color: rgba(255, 255, 255, 0.5);
 	--header-border-color: rgba(255, 255, 255, 0.1);
-	--title-color: #404040;
-	--title-hover-color: #595959;
+	--title-color: #085820;
+	--title-hover-color: #16963C;
 	--post-meta-background-color: #ededef;
 	--comments-background-color: #ededef;
-	--widget-title-color: #404040;
-	--widget-title-hover-color: #595959;
+	--widget-title-color: #085820;
+	--widget-title-hover-color: #16963C;
 	--widget-background-color: #ededef;
-	--footer-background-color: #404040;
+	--footer-background-color: #085820;
 	--footer-text-color: rgba(255, 255, 255, 0.6);
 	--footer-link-color: #fff;
 	--footer-link-hover-color: rgba(255, 255, 255, 0.6);
@@ -335,7 +336,7 @@ h6 {
 	clear: both;
 	margin-top: 1em;
 	margin-bottom: 0.75em;
-	color: #404040;
+	color: #085820;
 	color: var(--title-color);
 	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
@@ -538,7 +539,7 @@ tfoot td {
 }
 
 a {
-	color: #595959;
+	color: #16963C;
 	color: var(--link-color);
 	text-decoration: underline;
 	background-color: transparent;
@@ -547,7 +548,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-	color: #404040;
+	color: #085820;
 	color: var(--link-hover-color);
 	text-decoration: none;
 }
@@ -620,7 +621,7 @@ input[type="submit"] {
 	border: none;
 	color: #fff;
 	color: var(--button-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 	text-decoration: none;
 	font-weight: normal;
@@ -642,7 +643,7 @@ input[type="reset"]:active,
 input[type="submit"]:active {
 	color: #fff;
 	color: var(--button-hover-text-color);
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 }
 
@@ -812,13 +813,13 @@ textarea {
 # - Header
 --------------------------------------------------------------*/
 .site-header {
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--header-background-color);
 }
 
 .header-wrap {
 
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--header-background-color);
 }
 
@@ -1009,7 +1010,7 @@ body.site-description-hidden .site-header .site-description {
 .main-navigation ul ul {
 	font-size: 16px;
 	font-size: 1rem;
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--header-background-color);
 }
 
@@ -1245,7 +1246,7 @@ body.site-description-hidden .site-header .site-description {
 .sticky {
 	padding-left: 2rem;
 	border-left: 5px solid;
-	border-color: #404040;
+	border-color: #085820;
 	border-color: var(--title-color);
 }
 
@@ -1257,7 +1258,7 @@ body.site-description-hidden .site-header .site-description {
 .entry-title {
 	margin: 0;
 	padding: 0;
-	color: #404040;
+	color: #085820;
 	color: var(--title-color);
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -1275,7 +1276,7 @@ body.site-description-hidden .site-header .site-description {
 
 .entry-title a:link,
 .entry-title a:visited {
-	color: #404040;
+	color: #085820;
 	color: var(--title-color);
 	text-decoration: none;
 	transition: all 0.15s ease;
@@ -1283,7 +1284,7 @@ body.site-description-hidden .site-header .site-description {
 
 .entry-title a:hover,
 .entry-title a:active {
-	color: #595959;
+	color: #16963C;
 	color: var(--title-hover-color);
 }
 
@@ -1413,7 +1414,7 @@ body.site-description-hidden .site-header .site-description {
 .entry-tags a:visited {
 	color: #fff;
 	color: var(--button-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 	transition: all 0.15s ease;
 }
@@ -1423,7 +1424,7 @@ body.site-description-hidden .site-header .site-description {
 .entry-tags a:focus {
 	color: #fff;
 	color: var(--button-hover-text-color);
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 }
 
@@ -1460,7 +1461,7 @@ body.date-hidden.author-hidden.categories-hidden.comments-hidden .type-post .ent
 	padding: 0.6rem 1rem;
 	color: #fff;
 	color: var(--button-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 	font-size: 15px;
 	font-size: 0.9375rem;
@@ -1480,7 +1481,7 @@ body.date-hidden.author-hidden.categories-hidden.comments-hidden .type-post .ent
 .read-more:focus {
 	color: #fff;
 	color: var(--button-hover-text-color);
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 }
 
@@ -1523,13 +1524,13 @@ body.date-hidden.author-hidden.categories-hidden.comments-hidden .type-post .ent
 
 .post-navigation .nav-links a:link .entry-title,
 .post-navigation .nav-links a:visited .entry-title {
-	color: #404040;
+	color: #085820;
 	color: var(--title-color);
 }
 
 .post-navigation .nav-links a:hover .entry-title,
 .post-navigation .nav-links a:active .entry-title {
-	color: #595959;
+	color: #16963C;
 	color: var(--title-hover-color);
 }
 
@@ -1813,7 +1814,7 @@ body.page-template-template-fullwidth-no-title .site-content .site-main .entry-c
 
 .pagination a:hover,
 .pagination a:active {
-	color: #404040;
+	color: #085820;
 	color: var(--link-hover-color);
 	text-decoration: none;
 	font-weight: bold;
@@ -1823,7 +1824,7 @@ body.page-template-template-fullwidth-no-title .site-content .site-main .entry-c
 .pagination .active .page-link {
 	color: #fff;
 	color: var(--button-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 }
 
@@ -2002,13 +2003,13 @@ p.has-background {
 }
 
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background) {
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 }
 
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-text-color):not(.has-background):hover,
 .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-text-color):not(.has-background):active {
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 }
 
@@ -2187,13 +2188,13 @@ p.has-background {
 /* Block Text Colors */
 .has-primary-color,
 .wp-block-button__link.has-primary-color {
-	color: #404040;
+	color: #085820;
 	color: var(--primary-color);
 }
 
 .has-secondary-color,
 .wp-block-button__link.has-secondary-color {
-	color: #595959;
+	color: #16963C;
 	color: var(--secondary-color);
 }
 
@@ -2246,13 +2247,13 @@ p.has-background {
 /* Block Background Colors */
 .has-primary-background-color,
 .has-primary-background-color[class] {
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--primary-color);
 }
 
 .has-secondary-background-color,
 .has-secondary-background-color[class] {
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--secondary-color);
 }
 
@@ -2334,7 +2335,7 @@ p.has-background {
 .widget .widget-title {
 	margin: 0 0 1rem;
 	padding: 0;
-	color: #404040;
+	color: #085820;
 	color: var(--widget-title-color);
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -2399,7 +2400,7 @@ p.has-background {
 .comments-title,
 .comment-reply-title {
 	margin: 0 0 1.5rem;
-	color: #404040;
+	color: #085820;
 	color: var(--title-color);
 	font-family: arial, helvetica, sans-serif;
 	font-family: var(--title-font);
@@ -2870,7 +2871,7 @@ figcaption,
 .footer-wrap {
 	color: rgba(255, 255, 255, 0.6);
 	color: var(--footer-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--footer-background-color);
 }
 
@@ -3509,7 +3510,7 @@ figcaption,
 	padding: 0.4rem 0.65rem;
 	color: #fff;
 	color: var(--button-text-color);
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 	font-size: 15px;
 	font-size: 0.9375rem;
@@ -3527,13 +3528,13 @@ figcaption,
 .tzwb-tabbed-content .tzwb-tabnavi li a:active {
 	color: #fff;
 	color: var(--button-hover-text-color);
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 	text-decoration: none;
 }
 
 .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 }
 
@@ -3567,7 +3568,7 @@ figcaption,
 	display: block;
 	margin: 2px 2px 0 0;
 	padding: 0.70rem;
-	background-color: #404040;
+	background-color: #085820;
 	background-color: var(--button-color);
 }
 
@@ -3583,7 +3584,7 @@ figcaption,
 .tzwb-social-icons .social-icons-menu li a:active,
 .social-logo a:hover,
 .social-logo a:active {
-	background-color: #595959;
+	background-color: #16963C;
 	background-color: var(--button-hover-color);
 	text-decoration: none;
 }

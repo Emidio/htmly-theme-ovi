@@ -4,7 +4,6 @@ $functions_file = theme_path() . 'functions.php';
 if (file_exists($functions_file)) {
     require_once $functions_file;
 }
-$config_theme = config_theme();
 ?>
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
 <!doctype html>
@@ -14,9 +13,17 @@ $config_theme = config_theme();
     <?php echo $metatags;?>
 
     <link rel="stylesheet" id="genericons-css"  href="<?php echo theme_path();?>genericons/genericons.css" type="text/css" media="all" />
+    <?php
+        $theme_path = parse_url(theme_path(), PHP_URL_PATH);
+        $theme_css_file = $_SERVER['DOCUMENT_ROOT'] . $theme_path . 'css/style-' . config('theme.flavor') . ".css";
+        if (file_exists($theme_css_file)):
+    ?>
+    <link rel="stylesheet" href="<?php echo theme_path();?>css/style-<?php echo config('theme.flavor'); ?>.css" type="text/css" media="all">
+    <?php else: ?>
     <link rel="stylesheet" href="<?php echo theme_path();?>css/style.css" type="text/css" media="all">
-    <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
+    <?php endif;?>
 
+    <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
     <?php if (isset($p) && str_contains($p->body, '<pre><code>')):?>
     <script type="text/javascript" src="<?php echo theme_path();?>highlightjs/highlight.min.js" id="highlight-js"></script>
     <link rel="stylesheet" href="<?php echo theme_path();?>highlightjs/styles/default.css" type="text/css" media="all">
@@ -172,7 +179,7 @@ $config_theme = config_theme();
 				<?php endif;?>
 
 
-				<?php if (config_theme('webcam')): ?>
+				<?php if (config('theme.webcam') == 'true'): ?>
 				<section id="tzwb-webcam" class="widget tzwb-webcam">
 					<h3 class="widget-title"><?php echo i18n('Webcam');?></h3>
 					<?php
