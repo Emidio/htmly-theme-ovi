@@ -54,7 +54,7 @@ if (file_exists($functions_file)) {
 
 	<div class="entry-content entry-excerpt">
 	<?php 
-	if (str_contains($p->body ?? '', '<div class="image-row">')) {
+	if (strpos($p->body ?? '', '<div class="image-row">') !== false) {
 	    $body = processImageRows($p->body);
 	    echo $body;
 	}

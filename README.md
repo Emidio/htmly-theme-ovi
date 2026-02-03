@@ -27,7 +27,7 @@ In next releases the images stripe will have lightbox integrated.
 ## Downloads page
 When slug is "downloads" all links are converted to download buttons. Copy .htaccess.downloads to your downloads folder (where downloadable files are) and rename it .htaccess
 
-It a very simple anti-leech direct download protection (can be easily bypassed, but at least requires some effort on it).
+It is a very simple anti-leech direct download protection (can be easily bypassed, but at least requires some effort on it).
 
 An example here:
 
@@ -50,25 +50,22 @@ See how it works here:
 [https://htmlydemo.reggiani.link/post/quote-post](https://htmlydemo.reggiani.link/post/quote-post)
 
 ## Flavors
-You can change the flavor (main colors) of the theme adding a custom variable in HTMLy config (Admin > Config > Custom settings TAB). Add variable:
-
-`theme.flavor`
-
-with one of the following values: aqua, coffee, eggplant, orange, tea. Different value or no variable set will use the grey neutral color scheme.
+You can change the flavor (main colors) of the theme from HTMLy theme config (Admin > Themes > Config). 
+Actual flavors are: aqua, coffee, eggplant, orange, tea. Different value or no variable set will use the grey neutral color scheme.
 
 ## To Do list
 This template is usable. There are some small improvement needed/to be implemented:
 
-* consistency in UI (mainly buttons shape, size and colors)
+* CSS cleaning
 * possibility to set header logo and image background
 * option to enable comments on statics and authors pages on a per-page basis
 
-## Note (read before download) - 2026-01-14
-This template is compatible with main HTMLy code at:
+## Note (read before download)
+Version 0.1.2 is template is compatible with main HTMLy code at:
 
 [https://github.com/danpros/htmly/](https://github.com/danpros/htmly/)
 
-However will work only after the last pull request will be accepted. This warning will be removed once pull request is merged to main HTMLy code.
+Version 0.1.3 will work only after the last pull request will be accepted. This warning will be removed once pull request is merged to main HTMLy code.
 
 ## License
 

@@ -24,7 +24,7 @@ if (file_exists($functions_file)) {
     <?php endif;?>
 
     <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
-    <?php if (isset($p) && str_contains($p->body, '<pre><code>')):?>
+    <?php if (isset($p) && strpos($p->body, '<pre><code>') !== false):?>
     <script type="text/javascript" src="<?php echo theme_path();?>highlightjs/highlight.min.js" id="highlight-js"></script>
     <link rel="stylesheet" href="<?php echo theme_path();?>highlightjs/styles/default.css" type="text/css" media="all">
     <?php endif;?>
@@ -309,7 +309,7 @@ if (file_exists($functions_file)) {
         });
     </script>
 
-    <?php if (str_contains($p->body ?? '', '<div class="image-row">')):?>
+    <?php if (strpos($p->body ?? '', '<div class="image-row">') !== false):?>
     
     <style>
         .lightbox {
@@ -481,7 +481,7 @@ document.querySelectorAll('.image-row img').forEach(img => {
         </script>
     <?php endif;?>
     
-    <?php if (str_contains($p->body ?? '', '<pre><code>')):?>
+    <?php if (strpos($p->body ?? '', '<pre><code>') !== false):?>
     <script type="text/javascript">
         // highlight code in code blocks
         hljs.highlightAll();
