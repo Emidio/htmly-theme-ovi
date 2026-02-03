@@ -18,13 +18,13 @@
 
     <?php if (!empty($p->image)) {?>
         <figure class="post-image<?php if (config('teaser.type') === 'full') {?> post-image-full<?php } else {?> post-image-summary<?php } ?>">
-            <a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark" aria-hidden="true">
+            <a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark">
                 <img src="<?php echo $p->image;?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<?php echo $p->title;?>" loading="lazy" width="100%"/>
             </a>
         </figure>
     <?php } elseif (!empty($img) && empty($p->quote) && empty($p->video) && empty($p->audio) && config('teaser.type') === 'trimmed') { ?>
         <figure class="post-image<?php if (config('teaser.type') === 'full') {?> post-image-full<?php } else {?> post-image-summary<?php } ?>">
-            <a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark" aria-hidden="true">
+            <a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark">
                 <img src="<?php echo $img;?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<?php echo $p->title;?>" loading="lazy" width="100%"/>
             </a>
         </figure>

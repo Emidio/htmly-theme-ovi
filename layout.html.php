@@ -1,6 +1,7 @@
 <?php
+$theme_path = parse_url(theme_path(), PHP_URL_PATH);
 // Include custom functions
-$functions_file = theme_path() . 'functions.php';
+$functions_file = ltrim($theme_path, '/') . 'functions.php';
 if (file_exists($functions_file)) {
     require_once $functions_file;
 }
@@ -14,7 +15,6 @@ if (file_exists($functions_file)) {
 
     <link rel="stylesheet" id="genericons-css"  href="<?php echo theme_path();?>genericons/genericons.css" type="text/css" media="all" />
     <?php
-        $theme_path = parse_url(theme_path(), PHP_URL_PATH);
         $theme_css_file = $_SERVER['DOCUMENT_ROOT'] . $theme_path . 'css/style-' . config('theme.flavor') . ".css";
         if (file_exists($theme_css_file)):
     ?>
@@ -229,7 +229,7 @@ if (file_exists($functions_file)) {
 							<span class="screen-reader-text"><?php echo i18n('Search_for');?></span>
 							<input type="search" class="search-field" placeholder="<?php echo i18n('Search_for');?> …" name="search" title="<?php echo i18n('Search_for');?>">
 						</label>
-						<button type="submit" class="search-submit">
+						<button type="submit" class="search-submit" aria-label="<?php echo i18n('Search');?>">
 							<svg class="icon icon-search" aria-hidden="true" role="img"> <use xlink:href="#search"></use> </svg>
 							<span class="screen-reader-text"><?php echo i18n('Search');?></span>
 						</button>
@@ -299,9 +299,101 @@ if (file_exists($functions_file)) {
         });
     </script>
 
-    <?php if (str_contains($p->body, '<div class="image-row">')):?>
+    <?php if (str_contains($p->body ?? '', '<div class="image-row">')):?>
+    
+    <style>
+        .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.lightbox.hidden {
+    display: none;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+#lightbox-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100vw;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 32px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+    </style>
+    
+    
+<div id="lightbox" class="lightbox hidden">
+    <div class="lightbox-backdrop"></div>
+    <img id="lightbox-img" alt="">
+    <button class="lightbox-close">&times;</button>
+</div>
+
+    
+    
+    
+    
         <!-- Javascript to handle the image row auto fit - added only if image-row is present in post content -->
         <script type="text/javascript">
+            
+            
+// Lightbox logic
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxBackdrop = lightbox.querySelector('.lightbox-backdrop');
+const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+function openLightbox(img) {
+    // Use data-original if exists, othewise falls back to src
+    const fullSizeSrc = img.dataset.original || img.src;
+
+    // Use natural size but clamp to viewport via CSS max-width/height
+    lightboxImg.src = fullSizeSrc;
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+}
+
+lightboxBackdrop.addEventListener('click', closeLightbox);
+lightboxClose.addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
+
+// Attach click handlers to all images
+document.querySelectorAll('.image-row img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => openLightbox(img));
+});
+
+            
+            
             const containers = document.querySelectorAll('.image-row');
             const mobileBreakpoint = 768; // px
             const gap = 5; // px
@@ -379,7 +471,7 @@ if (file_exists($functions_file)) {
         </script>
     <?php endif;?>
     
-    <?php if (str_contains($p->body, '<pre><code>')):?>
+    <?php if (str_contains($p->body ?? '', '<pre><code>')):?>
     <script type="text/javascript">
         // highlight code in code blocks
         hljs.highlightAll();

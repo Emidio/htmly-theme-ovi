@@ -26,7 +26,7 @@ if (file_exists($functions_file)) {
 
 	<?php if (!empty($p->image)) :?>
 	<figure class="post-image">
-		<a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark" aria-hidden="true">
+		<a class="wp-post-image-link" href="<?php echo $p->url;?>" rel="bookmark">
 			<img src="<?php echo $p->image;?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<?php echo $p->title;?>" loading="lazy" width="100%"/>
 		</a>
 	</figure>
@@ -53,7 +53,15 @@ if (file_exists($functions_file)) {
 	<?php endif;?>
 
 	<div class="entry-content entry-excerpt">
-	<?php echo $p->body; ?>	
+	<?php 
+	if (str_contains($p->body ?? '', '<div class="image-row">')) {
+	    $body = processImageRows($p->body);
+	    echo $body;
+	}
+	else {
+	    echo $p->body;
+	    }
+	?>
 	</div><!-- .entry-content -->
 	<div class="entry-tags"><span class="entry-tags-label screen-reader-text"><?php echo i18n('Tags');?></span><?php echo $p->tag;?></div>
 
