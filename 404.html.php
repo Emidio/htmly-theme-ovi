@@ -6,12 +6,14 @@ if (file_exists($functions_file)) {
 }
 ?>
 <?php if (!defined('HTMLY')) die('HTMLy'); ?>
-<article class="tz-magazine-post post hentry">	
+<?php $pageTitle = i18n('page_not_found'); ?>
+<article class="tz-magazine-post post hentry">
 	<header class="post-header entry-header">
-		<h1 class="post-title entry-title">Page not found!</h1>
+		<h1 class="post-title entry-title"><?php echo i18n('page_not_found');?></h1>
 	</header><!-- .entry-header -->
 	<div class="entry-content entry-excerpt">
-	<p>Please search to find what you're looking for or visit our <a href="<?php echo site_url() ?>">homepage</a> instead.</p>
+	<p><?php echo i18n('this_page_doesnt_exist');?> 
+	    Please search to find what you're looking for or visit our <a href="<?php echo site_url() ?>">homepage</a> instead.</p>
 	<?php echo search() ?>		
 	</div><!-- .entry-content -->
 </article>

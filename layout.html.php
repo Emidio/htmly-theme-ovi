@@ -15,10 +15,10 @@ if (file_exists($functions_file)) {
 
     <link rel="stylesheet" id="genericons-css"  href="<?php echo theme_path();?>genericons/genericons.css" type="text/css" media="all" />
     <?php
-        $theme_css_file = $_SERVER['DOCUMENT_ROOT'] . $theme_path . 'css/style-' . config('theme.flavor') . ".css";
+        $theme_css_file = $_SERVER['DOCUMENT_ROOT'] . $theme_path . 'css/style-' . theme_config('flavor') . ".css";
         if (file_exists($theme_css_file)):
     ?>
-    <link rel="stylesheet" href="<?php echo theme_path();?>css/style-<?php echo config('theme.flavor'); ?>.css" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo theme_path();?>css/style-<?php echo theme_config('flavor'); ?>.css" type="text/css" media="all">
     <?php else: ?>
     <link rel="stylesheet" href="<?php echo theme_path();?>css/style.css" type="text/css" media="all">
     <?php endif;?>
@@ -103,24 +103,24 @@ if (file_exists($functions_file)) {
 				<?php endif;?>
 
 				<?php if (isset($is_category)):?>
-					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Category');?>: <?php echo $category->title;?></h1><div class="taxonomy-description"><?php echo $category->body;?></div></header>
+					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Category');?>: <?php $pageTitle = i18n('Category') . ': ' . $category->title; echo $category->title;?></h1><div class="taxonomy-description"><?php echo $category->body;?></div></header>
 				<?php endif;?>
 				<?php if (isset($is_tag)):?>
-					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Tags');?>: <?php echo $tag->title;?></h1></header>
+					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Tags');?>: <?php $pageTitle = i18n('Tags') . ': ' . $tag->title; echo $tag->title;?></h1></header>
 				<?php endif;?>
 				<?php if (isset($is_archive)):?>
-					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Archives');?>: <?php echo $archive->title;?></h1></header>
+					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Archives');?>: <?php $pageTitle = i18n('Archives') . ': ' . $archive->title; echo $archive->title;?></h1></header>
 				<?php endif;?>
 				<?php if (isset($is_search)):?>
-					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Search');?>: <?php echo $search->title;?></h1></header>
+					<header class="entry-header"><h1 class="entry-title"><?php echo i18n('Search');?>: <?php $pageTitle = i18n('Search'); echo $search->title;?></h1></header>
 				<?php endif;?>
 				<?php if (isset($is_type)):?>
-					<header class="entry-header"><h1 class="entry-title">Type: <?php echo ucfirst($type->title);?></h1></header>
+					<header class="entry-header"><h1 class="entry-title">Type: <?php echo ucfirst($type->title); $pageTitle = $type->title;?></h1></header>
 				<?php endif;?>
 				<?php if (isset($is_blog)):?>
-					<header class="entry-header"><h1 class="entry-title">Blog</h1></header>
+					<header class="entry-header"><h1 class="entry-title">Blog</h1><?php $pageTitle = $p->title;?></header>
 				<?php endif;?>
-				
+
 				<div id="post-wrapper" class="post-wrapper">
 					<?php echo content();?>
 				</div>
@@ -129,13 +129,15 @@ if (file_exists($functions_file)) {
 
 			<section id="secondary" class="sidebar widget-area" role="complementary">
 
+                <?php if (social()): ?>
 				<div id="tzwb-social-icons" class="widget tzwb-social-icons">
 					<div class="tzwb-content tzwb-clearfix">
 						<?php echo social();?>
 					</div>
 				</div>
+                <?php endif;?>
 
-				<?php if (!isset($is_front) && !isset($is_blog)):?>
+				<?php if (!isset($is_front) && !isset($is_blog) && theme_config('recent_posts')):?>
 				<div id="tzwb-recent-posts" class="widget tzwb-recent-posts">
 					<h3 class="widget-title"><?php echo i18n("Recent_posts");?></h3>
 					<div class="tzwb-content tzwb-clearfix">
@@ -144,7 +146,7 @@ if (file_exists($functions_file)) {
 				</div>
 				<?php endif;?>
 
-				<?php if (config('views.counter') === 'true') :?>
+				<?php if (config('views.counter') === 'true' && theme_config('popular_posts')) :?>
 				<?php if (isset($is_front) || isset($is_blog)):?>
 				<div id="tzwb-popular-posts" class="widget tzwb-popular-posts">
 					<h3 class="widget-title"><?php echo i18n("Popular_posts");?></h3>
@@ -155,14 +157,14 @@ if (file_exists($functions_file)) {
 				<?php endif;?>
 				<?php endif;?>
 
-				<?php if (disqus()): ?>
+				<?php if (disqus() && theme_config('recent_comments')): ?>
 				<section id="tzwb-recent-comments" class="widget tzwb-recent-comments">
 					<h3 class="widget-title"><?php echo i18n('Comments');?></h3>
 					<script src="//<?php echo config('disqus.shortname');?>.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=0&amp;avatar_size=48&amp;excerpt_length=200&amp;hide_mods=0" type="text/javascript"></script><style>li.dsq-widget-item {padding-top:15px;} img.dsq-widget-avatar {margin-right:5px;} ul.dsq-widget-list {padding-left:0px}</style>
 				</section>
 				<?php endif;?>
 
-				<?php if (local()): ?>
+				<?php if (local() && theme_config('recent_comments')): ?>
 				<section id="tzwb-recent-comments" class="widget tzwb-recent-comments">
 					<h3 class="widget-title"><?php echo i18n('Comments');?></h3>
 					<ul>
@@ -179,7 +181,7 @@ if (file_exists($functions_file)) {
 				<?php endif;?>
 
 
-				<?php if (config('theme.webcam') == 'true'): ?>
+				<?php if (theme_config('webcam')): ?>
 				<section id="tzwb-webcam" class="widget tzwb-webcam">
 					<h3 class="widget-title"><?php echo i18n('Webcam');?></h3>
 					<?php
@@ -191,36 +193,44 @@ if (file_exists($functions_file)) {
 				</section>
 				<?php endif;?>
 
+                <?php if (theme_config('category_list') || theme_config('archive_list') || theme_config('tag_cloud')) :?>
 				<div id="tzwb-tabbed-content-1" class="widget tzwb-tabbed-content">
 					<div class="tzwb-content tzwb-clearfix">
 						<div class="tzwb-tabnavi-wrap tzwb-clearfix">
 							<ul class="tzwb-tabnavi">
-								<li><a href="#tzwb-tabbed-content-1-tab-0" class="current-tab"><?php echo i18n('Category');?></a></li>
-								<li><a href="#tzwb-tabbed-content-1-tab-1"><?php echo i18n('Tags');?></a></li>
-                                <li><a href="#tzwb-tabbed-content-1-tab-2"><?php echo i18n("Archives");?></a></li>
+								<?php if (theme_config('category_list')) :?><li><a href="#tzwb-tabbed-content-1-tab-0" class="current-tab"><?php echo i18n('Category');?></a></li><?php endif;?>
+								<?php if (theme_config('tag_cloud')) :?><li><a href="#tzwb-tabbed-content-1-tab-1"><?php echo i18n('Tags');?></a></li><?php endif;?>
+                                <?php if (theme_config('archive_list')) :?><li><a href="#tzwb-tabbed-content-1-tab-2"><?php echo i18n("Archives");?></a></li><?php endif;?>
 							</ul>
 						</div>
 
+                        <?php if (theme_config('category_list')) :?>
 						<div id="tzwb-tabbed-content-1-tab-0" class="tzwb-tabcontent" style="">
 							<div class="tzwb-tabcontent-categories">
                                 <?php echo category_list();?>
 							</div>
 						</div>
+                        <?php endif;?>
 
+                        <?php if (theme_config('tag_cloud')) :?>
 						<div id="tzwb-tabbed-content-1-tab-1" class="tzwb-tabcontent" style="display: none;">
                             <div class="tzwb-tabcontent-tagcloud widget_tag_cloud">
                                 <div class="tagcloud"><?php echo tag_cloud();?></div>
                             </div>
 						</div>
+                        <?php endif;?>
 
+                        <?php if (theme_config('archive_list')) :?>
 						<div id="tzwb-tabbed-content-1-tab-2" class="tzwb-tabcontent" style="display: none;">
 						    <ul class="tzwb-tabcontent-archives">
                                 <?php echo archive_list('month-year');?>
                             </ul>
 						</div>
+                        <?php endif;?>
 
 					</div>
 				</div>
+                <?php endif;?>
 
 				<div id="search-widget" class="widget widget_search">
 				<h3 class="widget-title"><?php echo i18n('Search');?></h3>
@@ -515,6 +525,8 @@ document.querySelectorAll('.image-row img').forEach(img => {
     </script>
     <?php endif;?>
 
-	<?php if (analytics()): ?><?php echo analytics() ?><?php endif; ?>
+    <?php if (analytics()): ?><?php echo analytics(); ?><?php endif; ?>
+    <?php if (matomo(null, $locals)): ?><?php echo matomo(null, $locals); ?><?php endif; ?>
+    
 </body>
 </html>
