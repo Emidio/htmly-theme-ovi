@@ -3,7 +3,7 @@
     {
         var unique = new Date();
         document.images.webcam.src = "https://cam.reggiani.link/jpg/image.jpg?time=" + unique.getTime();
-        setTimeout(LoadNewImage, 1000);
+        // setTimeout(LoadNewImage, 1000);
     }
 </script>
 
