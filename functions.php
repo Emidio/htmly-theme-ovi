@@ -56,27 +56,27 @@ function getThumbnail($img)
 
 function processImageRows($html)
 {
-    // Trova tutti i div con classe image-row
+    // Get all divs with class image-row
     $pattern = '/<div class="image-row">(.*?)<\/div>/s';
     
     return preg_replace_callback($pattern, function($matches) {
         $content = $matches[1];
         
-        // Trova tutti i tag img all'interno del div
+        // Get all img tags inside the div
         $imgPattern = '/<img\s+src="([^"]+)"([^>]*)>/i';
         
         $processedContent = preg_replace_callback($imgPattern, function($imgMatches) {
             $originalSrc = $imgMatches[1];
             $otherAttributes = $imgMatches[2];
             
-            // Ottieni il thumbnail
+            // Get thumbnail
             $thumbnailSrc = getThumbnail($originalSrc);
             
-            // Se il thumbnail � diverso dall'originale, usa il thumbnail e salva l'originale
+            // If thumbnail differs from original, use it and save original
             if ($thumbnailSrc !== $originalSrc) {
                 return '<img src="' . $thumbnailSrc . '" data-original="' . $originalSrc . '"' . $otherAttributes . '>';
             } else {
-                // Se non c'� thumbnail, usa l'originale normalmente
+                // If no thumbnail, use original
                 return '<img src="' . $originalSrc . '"' . $otherAttributes . '>';
             }
         }, $content);

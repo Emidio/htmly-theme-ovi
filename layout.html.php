@@ -22,7 +22,6 @@ if (file_exists($functions_file)) {
     <?php else: ?>
     <link rel="stylesheet" href="<?php echo theme_path();?>css/style.css" type="text/css" media="all">
     <?php endif;?>
-
     <script type="text/javascript" src="<?php echo theme_path();?>js/jquery.js" id="jquery-core-js"></script>
     <?php if (isset($p) && strpos($p->body, '<pre><code>') !== false):?>
     <script type="text/javascript" src="<?php echo theme_path();?>highlightjs/highlight.min.js" id="highlight-js"></script>
@@ -526,7 +525,6 @@ document.querySelectorAll('.image-row img').forEach(img => {
     <?php endif;?>
 
     <?php if (analytics()): ?><?php echo analytics(); ?><?php endif; ?>
-    <?php if (matomo(null, $locals)): ?><?php echo matomo(null, $locals); ?><?php endif; ?>
-    
+    <?php if (matomo()): ?><?php echo matomo($locals); ?><?php endif; ?>
 </body>
 </html>
